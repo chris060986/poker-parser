@@ -1,0 +1,22 @@
+services:
+  - docker
+
+env:
+  - COMMIT=${TRAVIS_COMMIT::8}
+
+before_script:
+  - docker --version  # document the version travis is using
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+script:
+  - export IMAGE=chris060986/poker-hh-parser
+  - export TAG=`grep -Po '\bversion\s*=\s*"\K.*?(?=")' setup.py`
+  - echo $TAG
+  - docker build -t $IMAGE:$COMMIT .
+  - docker tag $IMAGE:$COMMIT $IMAGE:$TAG
+  - docker images --all
+
+after_success:
+  - docker push $IMAGE:$COMMIT
+  - docker push $IMAGE:$TAG
+
