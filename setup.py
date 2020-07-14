@@ -1,10 +1,10 @@
 from pathlib import Path
 from setuptools import setup, find_packages
 
-
 install_requires = [
     "poker",
-    "flask"
+    "flask",
+    "jsonpickle"
 ]
 
 
