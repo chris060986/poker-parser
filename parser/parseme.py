@@ -1,10 +1,7 @@
-from flask.json import tojson_filter
-from poker.room.pokerstars import PokerStarsHandHistory, _Street
-import jsonpickle
-from jsonpickle.handlers import BaseHandler
-from poker.card import Card
+from poker.room.pokerstars import PokerStarsHandHistory
+from poker import jsonencoding
 
-example="""
+example = """
 PokerStars Hand #212700439098:  Hold'em No Limit ($0.01/$0.02 USD) - 2020/04/25 13:29:31 ET
 Table 'Heike II' 9-max Seat #8 is the button
 Seat 2: pokerhero ($2 in chips) 
@@ -104,39 +101,14 @@ Seat 8: pasha-s-1983 folded before Flop (didn't bet)
 Seat 9: ErkZme folded before Flop (didn't bet)
 """
 
-@jsonpickle.handlers.register(Card, base=True)
-class CardHandler(BaseHandler):
-
-    def flatten(self, obj, data):
-        print(obj.__getattribute__('suit'))
-        data = {}
-        data['rank'] = obj.rank.val
-        data['suit'] = obj.suit.name
-        return data
-
-    def restore(self, obj):
-        raise NotImplementedError
-
-CardHandler.handles(Card)
-
-@jsonpickle.handlers.register(_Street, base=True)
-class StreetHandler(BaseHandler):
-
-    def flatten(self, obj, data):
-        data = {}
-        data['street'] = list(obj.__getattribute__('cards'))
-        return data
-
-    def restore(self, obj):
-        raise NotImplementedError
+json_encoder = jsonencoding.JsonEncoder()
 
 hh = PokerStarsHandHistory(hand_text=HAND13)
 hh.parse()
-jsonpickle.handlers.register(StreetHandler)
-jsonpickle.handlers.register(CardHandler)
-
-jsondata = jsonpickle.encode(hh.turn)
+jsondata = json_encoder.encode(hh)
 print(jsondata)
 
-jsondata = jsonpickle.encode(hh.flop)
-print(jsondata)
+hh2 = PokerStarsHandHistory(hand_text=example)
+hh2.parse()
+jsondata2 = json_encoder.encode(hh2)
+print(jsondata2)
