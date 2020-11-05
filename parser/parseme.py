@@ -101,9 +101,44 @@ Seat 8: pasha-s-1983 folded before Flop (didn't bet)
 Seat 9: ErkZme folded before Flop (didn't bet)
 """
 
+HAND14 = """PokerStars Hand #219345967221:  Hold'em No Limit ($0.02/$0.05 USD) - 2020/10/13 12:23:58 ET
+Table 'Alauda II' 9-max Seat #9 is the button
+Seat 1: MikeVulcan ($9.24 in chips) 
+Seat 2: Chrissi986 ($5 in chips) 
+Seat 3: shinga999 ($3.73 in chips) 
+Seat 4: *#300427#* ($4.19 in chips) 
+Seat 5: klugkk ($11.24 in chips) 
+Seat 6: WingsForMyV ($5 in chips) 
+Seat 7: georgio951 ($3.88 in chips) 
+Seat 9: MKDunmore858 ($7.94 in chips) 
+MikeVulcan: posts small blind $0.02
+Chrissi986: posts big blind $0.05
+*** HOLE CARDS ***
+Dealt to Chrissi986 [Td 6c]
+shinga999: folds 
+*#300427#*: folds 
+klugkk: folds 
+WingsForMyV: folds 
+georgio951: folds 
+MKDunmore858: folds 
+MikeVulcan: folds 
+Uncalled bet ($0.03) returned to Chrissi986
+Chrissi986 collected $0.04 from pot
+Chrissi986: doesn't show hand 
+*** SUMMARY ***
+Total pot $0.04 | Rake $0 
+Seat 1: MikeVulcan (small blind) folded before Flop
+Seat 2: Chrissi986 (big blind) collected ($0.04)
+Seat 3: shinga999 folded before Flop (didn't bet)
+Seat 4: *#300427#* folded before Flop (didn't bet)
+Seat 5: klugkk folded before Flop (didn't bet)
+Seat 6: WingsForMyV folded before Flop (didn't bet)
+Seat 7: georgio951 folded before Flop (didn't bet)
+Seat 9: MKDunmore858 (button) folded before Flop (didn't bet)"""
+
 json_encoder = jsonencoding.JsonEncoder()
 
-hh = PokerStarsHandHistory(hand_text=HAND13)
+hh = PokerStarsHandHistory(hand_text=HAND14)
 hh.parse()
 jsondata = json_encoder.encode(hh)
 print(jsondata)
