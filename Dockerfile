@@ -3,6 +3,6 @@ MAINTAINER christoph.birk@gmail.com
 
 WORKDIR /app
 
-COPY parser/*.py .
+COPY parser/*.py ./
 
 CMD [ "python", "./parseme.py" ]
