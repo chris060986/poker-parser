@@ -2,10 +2,10 @@ from flask import Flask, render_template, request
 from poker.room.pokerstars import PokerStarsHandHistory
 from poker import jsonencoding
 
-app = Flask(__name__)
+webserver = Flask(__name__)
 
 
-@app.route('/web', methods=['POST', 'GET'])
+@webserver.route('/web', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
         req_form = request.form
@@ -23,7 +23,7 @@ def index():
         return render_template('index.html')
 
 
-@app.route('/pokerstars', methods=['POST'])
+@webserver.route('/pokerstars', methods=['POST'])
 def pokerstars():
     data = request.json
 
@@ -34,4 +34,4 @@ def pokerstars():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    webserver.run(debug=True, host='0.0.0.0')
