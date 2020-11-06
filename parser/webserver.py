@@ -4,10 +4,11 @@ from poker import jsonencoding
 
 app = Flask(__name__)
 
-@app.route('/', methods = ['POST', 'GET'])
+
+@app.route('/web', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        req_form = request.data
+        req_form = request.form
         hand = req_form["hand"]
         cleaned_hand = hand.replace("\r", " ")
 
@@ -16,11 +17,13 @@ def index():
         hh = PokerStarsHandHistory(hand_text=cleaned_hand)
         hh.parse()
         jsondata = json_encoder.encode(hh)
+        print(jsondata)
         return render_template("index.html", result=jsondata)
     else:
         return render_template('index.html')
 
-@app.route('/pokerstars', methods = ['POST'])
+
+@app.route('/pokerstars', methods=['POST'])
 def pokerstars():
     data = request.json
 
@@ -28,7 +31,6 @@ def pokerstars():
     # cleaned_hand = hand.replace("\r", " ")
     print(data)
     return "200"
-
 
 
 if __name__ == '__main__':
