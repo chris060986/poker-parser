@@ -1,10 +1,16 @@
 FROM chris060986/python-poker:0.30.1
 MAINTAINER christoph.birk@gmail.com
 
-WORKDIR /app
+WORKDIR /
 
-COPY poker_parser /app/poker_parser
-COPY setup.py /app
+COPY poker_parser/ /app/
+COPY setup.py /setup.py
 RUN python setup.py install
 
-CMD [ "python", "./poker_parser/webserver.py" ]
+#RUN ls -la /app
+
+EXPOSE 5000
+
+ENTRYPOINT [ 'python3' ]
+
+CMD [ '/app/webserver.py' ]
