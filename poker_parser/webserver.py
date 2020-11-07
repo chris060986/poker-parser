@@ -1,11 +1,9 @@
-import couchdb
 from flask import Flask, render_template, request
 
 from poker_parser.database.couch_db import CouchDBAccess
 from poker_parser.parser.pokerstars_parser import PokerstarsParser
 
 app = Flask(__name__)
-couch_db_server = couchdb.Server("http://admin:admin@localhost:5984/")
 parser = PokerstarsParser()
 couch_db = CouchDBAccess()
 
