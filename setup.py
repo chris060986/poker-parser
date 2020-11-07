@@ -1,10 +1,11 @@
-from pathlib import Path
 from setuptools import setup, find_packages
 
 install_requires = [
     "poker",
     "flask",
-    "jsonpickle"
+    "jsonpickle",
+    "couchdb",
+    "configloader[all]"
 ]
 
 
@@ -23,7 +24,6 @@ setup(
     name="pokerstars_parser",
     version="0.0.1",
     description="Pokerstars HandHistory Parser",
-    long_description=Path("README.rst").read_text(),
     classifiers=classifiers,
     keywords="poker",
     author="Christoph Birk",
@@ -31,6 +31,5 @@ setup(
     url="https://github.com/chris060986/pokerstars_parser",
     license="MIT",
     packages=find_packages(),
-    install_requires=install_requires,
-    entry_points={"console_scripts": console_scripts},
+    install_requires=install_requires
 )
