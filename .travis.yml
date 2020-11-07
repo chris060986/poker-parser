@@ -9,7 +9,7 @@ before_script:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 script:
-  - export IMAGE=chris060986/poker-hh-parser_dummy
+  - export IMAGE=chris060986/poker-hh-parser
   - export TAG=`grep -Po '\bversion\s*=\s*"\K.*?(?=")' setup.py`
   - echo $TAG
   - docker build -t $IMAGE:$COMMIT .
