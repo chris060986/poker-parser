@@ -3,8 +3,8 @@ MAINTAINER christoph.birk@gmail.com
 
 WORKDIR /app
 
-COPY poker_parser /app
+COPY poker_parser /app/poker_parser
 COPY setup.py /app
 RUN python setup.py install
 
-CMD [ "python", "./webserver.py" ]
+CMD [ "python", "./poker_parser/webserver.py" ]
