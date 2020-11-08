@@ -138,7 +138,6 @@ Seat 6: WingsForMyV folded before Flop (didn't bet)
 Seat 7: georgio951 folded before Flop (didn't bet)
 Seat 9: MKDunmore858 (button) folded before Flop (didn't bet)"""
 
-# def get_json():
 json_encoder = jsonencoding.JsonEncoder()
 
 hh = PokerStarsHandHistory(hand_text=HAND14)
@@ -150,12 +149,3 @@ hh2 = PokerStarsHandHistory(hand_text=example)
 hh2.parse()
 jsondata2 = json_encoder.encode(hh2)
 print(jsondata2)
-    # return jsondata
-
-
-# def get_dict():
-#     hh = PokerStarsHandHistory(hand_text=HAND14)
-#     hh.parse()
-#
-#     pickler = Pickler()
-#     return pickler.flatten(hh)

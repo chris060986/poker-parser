@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
-from poker_parser.database.couch_db import CouchDBAccess
-from poker_parser.parser.pokerstars_parser import PokerstarsParser
+from database.couch_db import CouchDBAccess
+from parser.pokerstars_parser import PokerstarsParser
 
 app = Flask(__name__)
 parser = PokerstarsParser()

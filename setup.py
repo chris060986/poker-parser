@@ -31,5 +31,6 @@ setup(
     url="https://github.com/chris060986/pokerstars_parser",
     license="MIT",
     packages=find_packages(),
+    package_data={'': ['templates/*']},
     install_requires=install_requires
 )

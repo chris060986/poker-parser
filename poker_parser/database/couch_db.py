@@ -4,14 +4,12 @@ import couchdb
 class CouchDBAccess:
 
     # externalize config
-    url = 'localhost:5984'
+    url = 'my-poker-couch:5984'
     user = 'admin'
     password = 'admin'
 
     def __init__(self):
         self.couch_db_server = couchdb.Server("http://%s:%s@%s/" % (self.user, self.password, self.url))
-        for dbname in self.couch_db_server:
-            print(dbname)
 
     def get_db(self, hero):
         # non-performant?
