@@ -1,5 +1,3 @@
-language: python
-python: "3.6"
 services:
   - docker
 
@@ -11,7 +9,6 @@ before_script:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 script:
-  - python setup.py build
   - export IMAGE=chris060986/poker-hh-parser
   - export TAG=`grep -Po '\bversion\s*=\s*"\K.*?(?=")' setup.py`
   - echo $TAG
