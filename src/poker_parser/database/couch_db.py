@@ -1,15 +1,15 @@
 import couchdb
 
+from config import app
+
 
 class CouchDBAccess:
-
     # externalize config
-    url = 'my-poker-couch:5984'
     user = 'admin'
     password = 'admin'
 
     def __init__(self):
-        self.couch_db_server = couchdb.Server("http://%s:%s@%s/" % (self.user, self.password, self.url))
+        self.couch_db_server = couchdb.Server("http://%s:%s@%s:%d/" % (self.user, self.password, app.config["DATABASE_URL"], app.config["DATABASE_PORT"]))
 
     def get_db(self, hero):
         # non-performant?

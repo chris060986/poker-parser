@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request
+from flask import render_template, request
+from config import app
 
 from poker_parser.database.couch_db import CouchDBAccess
 from poker_parser.parser.pokerstars_parser import PokerstarsParser
 
-app = Flask(__name__)
 parser = PokerstarsParser()
 couch_db = CouchDBAccess()
 
@@ -37,7 +37,4 @@ def pokerstars(hero):
 
 
 if __name__ == '__main__':
-    app.config.update(
-        DEBUG=True,
-    )
     app.run(host='0.0.0.0', port=5000)

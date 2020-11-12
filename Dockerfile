@@ -8,4 +8,7 @@ RUN python setup.py install
 WORKDIR /app
 COPY /src ./
 
+ENV DATABASE_URL="my-poker-couch" \
+    DATABASE_PORT=5984
+
 CMD [ "python", "./webserver.py" ]
