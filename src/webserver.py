@@ -1,11 +1,16 @@
-from flask import render_template, request
-from config import app
+from flask import Flask, render_template, request
+from config import config
 
 from poker_parser.database.couch_db import CouchDBAccess
 from poker_parser.parser.pokerstars_parser import PokerstarsParser
 
+
+app = Flask(__name__)
+app.config.from_object(config.PokerParserConfig)
+if app.config["DEBUG"]:
+    print(app.config)
 parser = PokerstarsParser()
-couch_db = CouchDBAccess()
+couch_db = CouchDBAccess(app.config)
 
 
 @app.route('/web', methods=['POST', 'GET'])
