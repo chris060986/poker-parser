@@ -24,7 +24,7 @@ def index():
         hh_doc = parser.get_json_doc(cleaned_hand)
 
         print(hh_json_str)
-        couch_db.save_poker_hand('pokerhero', hh_doc)
+        couch_db.save_poker_hand(hh_doc['hero'], hh_doc)
 
         return render_template("index.html", result=hh_json_str)
     else:
