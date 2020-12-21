@@ -3,7 +3,9 @@
 # poker-parser
 Parser for poker handhistories.
 
-TODOs:
-- setup and webendpoint to receive hand histories
-- implement parsing
-- store hand history in e.g. redis/kafka/noSQL-DB
+## Configuration
+TODO: describe config and env variables
+
+# ToDo's
+- remove hard coded std user/pw and replace with secret
+- handle and save errors for debugging
