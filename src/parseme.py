@@ -1,5 +1,7 @@
-from poker.room.pokerstars import PokerStarsHandHistory
 from poker import jsonencoding
+from poker.room.pokerstars import PokerStarsHandHistory
+
+# TODO: Remove file.
 
 example = """
 PokerStars Hand #212700439098:  Hold'em No Limit ($0.01/$0.02 USD) - 2020/04/25 13:29:31 ET

@@ -1,8 +1,14 @@
-FROM chris060986/python-poker:0.30.1
+FROM chris060986/python-poker:0.30.2
 MAINTAINER christoph.birk@gmail.com
 
+WORKDIR /tmp
+COPY setup.py .
+RUN python setup.py install
+
 WORKDIR /app
+COPY /src ./
 
-COPY parser/*.py ./
+ENV DATABASE_URL="my-poker-couch" \
+    DATABASE_PORT=5984
 
-CMD [ "python", "./parseme.py" ]
+CMD [ "python", "./webserver.py" ]

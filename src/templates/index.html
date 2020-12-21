@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<body>
+    <h1>Poker Parser Web Ui</h1>
+    <form action = "http://localhost:5000/web" method = "POST">
+        <p>Hand <textarea name="hand" rows="20" cols="100" ></textarea> </p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% if result %}
+        {{ result }}
+    {% endif %}
+</body>
+</html>
