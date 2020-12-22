@@ -18,7 +18,7 @@ def index():
     if request.method == 'POST':
         req_form = request.form
         hand = req_form["hand"]
-        cleaned_hand = hand.replace("\r", " ")
+        cleaned_hand = hand.replace("\r", "")
 
         hh_json_str = parser.get_json_str(cleaned_hand)
         hh_doc = parser.get_json_doc(cleaned_hand)
