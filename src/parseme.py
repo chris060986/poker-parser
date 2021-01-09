@@ -106,7 +106,7 @@ Seat 9: ErkZme folded before Flop (didn't bet)
 HAND14 = """PokerStars Hand #219345967221:  Hold'em No Limit ($0.02/$0.05 USD) - 2020/10/13 12:23:58 ET
 Table 'Alauda II' 9-max Seat #9 is the button
 Seat 1: MikeVulcan ($9.24 in chips) 
-Seat 2: Chrissi986 ($5 in chips) 
+Seat 2: pokerhero ($5 in chips) 
 Seat 3: shinga999 ($3.73 in chips) 
 Seat 4: *#300427#* ($4.19 in chips) 
 Seat 5: klugkk ($11.24 in chips) 
@@ -114,9 +114,9 @@ Seat 6: WingsForMyV ($5 in chips)
 Seat 7: georgio951 ($3.88 in chips) 
 Seat 9: MKDunmore858 ($7.94 in chips) 
 MikeVulcan: posts small blind $0.02
-Chrissi986: posts big blind $0.05
+pokerhero: posts big blind $0.05
 *** HOLE CARDS ***
-Dealt to Chrissi986 [Td 6c]
+Dealt to pokerhero [Td 6c]
 shinga999: folds 
 *#300427#*: folds 
 klugkk: folds 
@@ -124,13 +124,13 @@ WingsForMyV: folds
 georgio951: folds 
 MKDunmore858: folds 
 MikeVulcan: folds 
-Uncalled bet ($0.03) returned to Chrissi986
-Chrissi986 collected $0.04 from pot
-Chrissi986: doesn't show hand 
+Uncalled bet ($0.03) returned to pokerhero
+pokerhero collected $0.04 from pot
+pokerhero: doesn't show hand 
 *** SUMMARY ***
 Total pot $0.04 | Rake $0 
 Seat 1: MikeVulcan (small blind) folded before Flop
-Seat 2: Chrissi986 (big blind) collected ($0.04)
+Seat 2: pokerhero (big blind) collected ($0.04)
 Seat 3: shinga999 folded before Flop (didn't bet)
 Seat 4: *#300427#* folded before Flop (didn't bet)
 Seat 5: klugkk folded before Flop (didn't bet)
@@ -138,9 +138,62 @@ Seat 6: WingsForMyV folded before Flop (didn't bet)
 Seat 7: georgio951 folded before Flop (didn't bet)
 Seat 9: MKDunmore858 (button) folded before Flop (didn't bet)"""
 
+HAND15 = """PokerStars Hand #220748073279:  Hold'em No Limit ($0.02/$0.05 USD) - 2020/11/24 13:15:27 ET
+Table 'Tauntonia IV' 9-max Seat #9 is the button
+Seat 1: BigAngryFish ($7.38 in chips) 
+Seat 2: nanoroma ($7.67 in chips) 
+Seat 3: moneymakerxyz ($9.27 in chips) 
+Seat 4: xricks ($4.83 in chips) 
+Seat 5: pokerhero ($5.11 in chips) 
+Seat 6: Extanse ($6.10 in chips) 
+Seat 7: mikemb69 ($3.70 in chips) 
+Seat 8: Theo53842 ($2.50 in chips) 
+Seat 9: TchilePR ($3.86 in chips) 
+BigAngryFish: posts small blind $0.02
+nanoroma: posts big blind $0.05
+Theo53842: posts big blind $0.05
+*** HOLE CARDS ***
+Dealt to pokerhero [9s 6d]
+moneymakerxyz: folds 
+xricks: folds 
+pokerhero: folds 
+Extanse: folds 
+mikemb69: folds 
+Theo53842: raises $0.12 to $0.17
+TchilePR: calls $0.17
+BigAngryFish: folds 
+nanoroma: calls $0.12
+*** FLOP *** [Qh 3s 8d]
+nanoroma: checks 
+Theo53842: bets $0.26
+TchilePR: calls $0.26
+nanoroma: raises $0.26 to $0.52
+Theo53842: raises $1.81 to $2.33 and is all-in
+TchilePR: folds 
+nanoroma: calls $1.81
+*** TURN *** [Qh 3s 8d] [Ad]
+*** RIVER *** [Qh 3s 8d Ad] [4c]
+*** SHOW DOWN ***
+nanoroma: shows [3h 3d] (three of a kind, Threes)
+Theo53842: shows [Kc Ks] (a pair of Kings)
+nanoroma collected $5.22 from pot
+Theo53842 cashed out the hand for $0.47
+*** SUMMARY ***
+Total pot $5.45 | Rake $0.23 
+Board [Qh 3s 8d Ad 4c]
+Seat 1: BigAngryFish (small blind) folded before Flop
+Seat 2: nanoroma (big blind) showed [3h 3d] and won ($5.22) with three of a kind, Threes
+Seat 3: moneymakerxyz folded before Flop (didn't bet)
+Seat 4: xricks folded before Flop (didn't bet)
+Seat 5: pokerhero folded before Flop (didn't bet)
+Seat 6: Extanse folded before Flop (didn't bet)
+Seat 7: mikemb69 folded before Flop (didn't bet)
+Seat 8: Theo53842 showed [Kc Ks] and lost with a pair of Kings (cashed out).
+Seat 9: TchilePR (button) folded on the Flop"""
+
 json_encoder = jsonencoding.JsonEncoder()
 
-hh = PokerStarsHandHistory(hand_text=HAND14)
+hh = PokerStarsHandHistory(hand_text=HAND15)
 hh.parse()
 jsondata = json_encoder.encode(hh)
 print(jsondata)

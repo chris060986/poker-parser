@@ -16,16 +16,18 @@ couch_db = CouchDBAccess(app.config)
 @app.route('/web', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        req_form = request.form
-        hand = req_form["hand"]
-        cleaned_hand = hand.replace("\r", "")
+        try:
+            req_form = request.form
+            hand = req_form["hand"]
+            cleaned_hand = hand.replace("\r", "")
 
-        hh_json_str = parser.get_json_str(cleaned_hand)
-        hh_doc = parser.get_json_doc(cleaned_hand)
+            hh_json_str = parser.get_json_str(cleaned_hand)
+            hh_doc = parser.get_json_doc(cleaned_hand)
 
-        print(hh_json_str)
-        couch_db.save_poker_hand(hh_doc['hero'], hh_doc)
-
+            print(hh_json_str)
+            couch_db.save_poker_hand(hh_doc['hero'], hh_doc)
+        except Exception:
+            hh_json_str = "exception while handling input of request: " + str(request.form)
         return render_template("index.html", result=hh_json_str)
     else:
         return render_template('index.html')
@@ -33,11 +35,15 @@ def index():
 
 @app.route('/pokerstars/<hero>', methods=['POST'])
 def pokerstars(hero):
-    data = request.json
+    try:
+        data = request.json
 
-    hh_doc = parser.get_json_doc(data['hand'])
-    couch_db.save_poker_hand(hero, hh_doc)
-    print(data)
+        hh_doc = parser.get_json_doc(data['hand'])
+        couch_db.save_poker_hand(hero, hh_doc)
+        print(data)
+    except Exception:
+        print(request)
+        return "500"
     return "200"
 
 

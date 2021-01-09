@@ -10,6 +10,10 @@ class CouchDBAccess:
         self.config = config
         self.couch_db_server = couchdb.Server("http://%s:%s@%s:%s/" % (self.user, self.password, self.config["DATABASE_URL"], self.config["DATABASE_PORT"]))
 
+    def normalize_hero_name(self, hero):
+        normalized_hero = hero.lower()
+        return normalized_hero
+
     def get_db(self, hero):
         # non-performant?
         if hero in self.couch_db_server:
@@ -35,7 +39,8 @@ class CouchDBAccess:
                 tuple of id and rev of the saved document
             """
         _id = str(hand_history_doc['id'])
-        db = self.get_db(hero)
+        normalized_hero = self.normalize_hero_name(hero)
+        db = self.get_db(normalized_hero)
         hand_history_doc['_id'] = _id
         row = db.get(_id)
         print(_id)
