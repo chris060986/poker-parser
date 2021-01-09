@@ -1,4 +1,4 @@
-FROM chris060986/python-poker:0.30.2
+FROM chris060986/python-poker:0.30.3
 MAINTAINER christoph.birk@gmail.com
 
 WORKDIR /tmp
