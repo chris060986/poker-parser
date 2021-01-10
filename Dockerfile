@@ -11,4 +11,4 @@ COPY /src ./
 ENV DATABASE_URL="my-poker-couch" \
     DATABASE_PORT=5984
 
-CMD [ "python", "./webserver.py" ]
+CMD [ "python", "-u", "./webserver.py" ]
