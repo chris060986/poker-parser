@@ -19,10 +19,9 @@ def index():
         try:
             req_form = request.form
             hand = req_form["hand"]
-            cleaned_hand = hand.replace("\r", "")
 
-            hh_json_str = parser.get_json_str(cleaned_hand)
-            hh_doc = parser.get_json_doc(cleaned_hand)
+            hh_json_str = parser.get_json_str(hand)
+            hh_doc = parser.get_json_doc(hand)
 
             print(hh_json_str)
             couch_db.save_poker_hand(hh_doc['hero'], hh_doc)
@@ -37,12 +36,12 @@ def index():
 def pokerstars(hero):
     try:
         data = request.json
-
+        # should be logging
+        print("Data received, try to parse: " + str(data))
         hh_doc = parser.get_json_doc(data['hand'])
         couch_db.save_poker_hand(hero, hh_doc)
-        print(data)
-    except Exception:
-        print(request)
+    except Exception as e:
+        print(e)
         return "500"
     return "200"
 

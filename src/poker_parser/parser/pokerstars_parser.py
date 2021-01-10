@@ -15,10 +15,14 @@ class PokerstarsParser:
         hh.parse()
         return hh
 
+    @staticmethod
+    def _clean_hand_history_str(raw_string):
+        return str.replace(raw_string, "\r", "")
+
     def get_json_str(self, hand_history_str):
-        hand_history = self.parse_hand_history(hand_history_str)
+        hand_history = self.parse_hand_history(self._clean_hand_history_str(hand_history_str))
         return self.json_encoder.encode(hand_history)
 
     def get_json_doc(self, hand_history_str):
-        hand_history = self.parse_hand_history(hand_history_str)
+        hand_history = self.parse_hand_history(self._clean_hand_history_str(hand_history_str))
         return self.pickler.flatten(hand_history)
